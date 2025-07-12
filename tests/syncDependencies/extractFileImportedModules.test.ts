@@ -64,4 +64,23 @@ describe('extractFileImportedModules', () => {
     expect(result.size).toBe(1);
     expect(result).toEqual(new Set(['@manypkg/get-packages']));
   });
+
+  it('should handle multiple line imports', () => {
+    const fileContent = `
+  import { mergeOptions } from '@hyperse-hub/vendure-common';
+  import {
+    Asset,
+    LanguageCode,
+    PluginCommonModule,
+    type Type,
+    VendurePlugin,
+  } from '@vendure/core';
+      `;
+
+    const result = extractFileImportedModules(fileContent);
+    expect(result.size).toBe(2);
+    expect(result).toEqual(
+      new Set(['@hyperse-hub/vendure-common', '@vendure/core'])
+    );
+  });
 });

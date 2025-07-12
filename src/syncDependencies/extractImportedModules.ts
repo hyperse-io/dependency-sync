@@ -46,7 +46,7 @@ export async function extractImportedModules(projectCwd: string) {
 export function extractFileImportedModules(fileContent: string) {
   // Ignore imports in ts docs comments
   const importRegex =
-    /^(?![\s]*(?:\/\*\*|\/{2}|\/{3}|\*)).*import\s+(?:.*\s+from\s+)?['"]([^'"]+)['"]/gm;
+    /^(?![\s]*(?:\/\*\*|\/{2}|\/{3}|\*)).*(?:import\s+(?:.*\s+from\s+)?|from\s+)['"]([^'"]+)['"]/gm;
   const modules = new Set<string>();
   let match;
 

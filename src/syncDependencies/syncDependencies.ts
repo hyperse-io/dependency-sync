@@ -133,6 +133,13 @@ const tidyPeerDependencies = async (
     }
   }
 
+  // If the peer dependency is not in the devDependencies, move it to devDependencies
+  for (const [key, value] of Object.entries(packgeJson.peerDependencies)) {
+    if (!oldPackageDevDependencies[key]) {
+      oldPackageDevDependencies[key] = value;
+    }
+  }
+
   packgeJson['dependencies'] = sortPackageJson(
     oldPackageDependencies
   ) as Record<string, string>;
