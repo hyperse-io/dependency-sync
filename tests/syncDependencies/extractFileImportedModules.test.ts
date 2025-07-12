@@ -83,4 +83,14 @@ describe('extractFileImportedModules', () => {
       new Set(['@hyperse-hub/vendure-common', '@vendure/core'])
     );
   });
+
+  it('should correct ignore {xx} from xx', () => {
+    const fileContent = `
+            'Cannot transition Review from "{ fromState }" to "{ toState }"',
+          `;
+
+    const result = extractFileImportedModules(fileContent);
+    expect(result.size).toBe(0);
+    expect(result).toEqual(new Set([]));
+  });
 });
