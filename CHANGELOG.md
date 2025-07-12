@@ -1,5 +1,11 @@
 # @hyperse/dependency-sync
 
+## 1.0.4
+
+### Patch Changes
+
+- [`6fb32a8`](https://github.com/hyperse-io/dependency-sync/commit/6fb32a836a19998697168d00b3e47f6cc1625e2b) Thanks [@tianyingchun](https://github.com/tianyingchun)! - fix extractFileImportedModules
+
 ## 1.0.3
 
 ### Patch Changes
