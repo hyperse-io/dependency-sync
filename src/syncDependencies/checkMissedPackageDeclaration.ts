@@ -23,7 +23,7 @@ export async function checkMissedPackageDeclaration(
   // Sort by length, to avoid the longest match
   const dependencies = Object.keys({
     ...(packgeJson['dependencies'] as Record<string, string>),
-    ...(packgeJson['devDependencies'] as Record<string, string>),
+    ...(packgeJson['peerDependencies'] as Record<string, string>),
   }).sort((a, b) => b.length - a.length);
 
   // Check if the imported modules are declared in the package.json file

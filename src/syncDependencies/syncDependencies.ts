@@ -110,12 +110,8 @@ const tidyPeerDependencies = async (
 
   // Infer the dependency peers from the dependencies and devDependencies
   const newInferredPeerDependencies = resolveInferedPeerDependencies(
-    Object.assign(
-      {},
-      oldPackageDependencies,
-      oldPackageDevDependencies,
-      needSyncToPeerDependencies
-    ),
+    // Do not includes devDependencies here, because devDependencies normally is redundant.
+    Object.assign({}, oldPackageDependencies, needSyncToPeerDependencies),
     maxRangeCanbeSyncPeerDependencies,
     dependenciesReferPeepDependencies
   );
@@ -138,7 +134,7 @@ const tidyPeerDependencies = async (
   }
 
   packgeJson['dependencies'] = sortPackageJson(
-    oldPackageDevDependencies
+    oldPackageDependencies
   ) as Record<string, string>;
 
   packgeJson['devDependencies'] = sortPackageJson(
@@ -189,19 +185,19 @@ export async function syncDependencies(
     ? packages.filter((x) => !excludedPackages(x))
     : packages;
 
-  // step1. check missing package declarations
-  if (checkMissing) {
-    for (const packageItem of needCheckProjects) {
-      await checkMissedPackageDeclaration(packageItem.dir, ignoredCheckList);
-    }
-  }
-
-  // step2. sync peer dependencies
+  // step1. sync peer dependencies
   for (const packageItem of needCheckProjects) {
     await tidyPeerDependencies(
       packageItem.dir,
       maxRangeCanbeSyncPeerDependencies,
       dependenciesReferPeepDependencies
     );
+  }
+
+  // step2. check missing package declarations
+  if (checkMissing) {
+    for (const packageItem of needCheckProjects) {
+      await checkMissedPackageDeclaration(packageItem.dir, ignoredCheckList);
+    }
   }
 }
