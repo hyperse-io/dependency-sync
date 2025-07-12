@@ -1,5 +1,11 @@
 # @hyperse/dependency-sync
 
+## 1.0.2
+
+### Patch Changes
+
+- [`f21838c`](https://github.com/hyperse-io/dependency-sync/commit/f21838c0e694e33658804ec29be3ade22f39bbd0) Thanks [@tianyingchun](https://github.com/tianyingchun)! - bugfix `newInferredPeerDependencies`
+
 ## 1.0.1
 
 ### Patch Changes
