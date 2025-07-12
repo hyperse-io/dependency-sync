@@ -1,0 +1,1 @@
+# @hyperse/dependency-sync

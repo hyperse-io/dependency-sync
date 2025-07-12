@@ -1,0 +1,81 @@
+{
+  "name": "@hyperse/dependency-sync",
+  "version": "1.0.0",
+  "description": "A comprehensive Node.js utility for managing dependencies in monorepo environments, specifically designed for Hyperse plugin ecosystems.",
+  "keywords": [
+    "hyperse",
+    "typescript",
+    "monorepo",
+    "dependency management"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:hyperse-io/dependency-sync.git"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./bin/",
+    "./dist/",
+    "./index.js"
+  ],
+  "scripts": {
+    "build": "rimraf dist && tsc -p ./tsconfig.build.json",
+    "clean": "rimraf --no-glob ./dist ./_release ./coverage ./tsconfig.tsbuildinfo",
+    "changeset": "changeset",
+    "cz": "cz",
+    "lint": "eslint .",
+    "lint-fix": "yarn lint --fix",
+    "lint-staged-files": "lint-staged --allow-empty",
+    "next": "next build",
+    "prepare": "husky",
+    "release": "yarn build && changeset publish",
+    "test": "run-s test-unit",
+    "test-task": "vitest run",
+    "test-unit": "vitest run",
+    "typecheck": "tsc --project ./tsconfig.json --noEmit"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "@manypkg/get-packages": "^3.0.0",
+    "globby": "^14.1.0",
+    "lodash": "^4.17.21",
+    "sort-package-json": "^3.4.0"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.5.1",
+    "@changesets/cli": "^2.29.5",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@hyperse/eslint-config-hyperse": "^1.4.5",
+    "@types/node": "^24.0.13",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^9.31.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  },
+  "packageManager": "yarn@4.9.2",
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
