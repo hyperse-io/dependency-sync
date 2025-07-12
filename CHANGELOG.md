@@ -1,5 +1,11 @@
 # @hyperse/dependency-sync
 
+## 1.0.3
+
+### Patch Changes
+
+- [`c48a92e`](https://github.com/hyperse-io/dependency-sync/commit/c48a92e22094ccb52dd2eedf2d568b7036049f43) Thanks [@tianyingchun](https://github.com/tianyingchun)! - bug fix oldPackageDevDependencies
+
 ## 1.0.2
 
 ### Patch Changes
