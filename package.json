@@ -12,6 +12,7 @@
     "type": "git",
     "url": "git@github.com:hyperse-io/dependency-sync.git"
   },
+  "license": "MIT",
   "type": "module",
   "exports": {
     ".": {
@@ -29,9 +30,11 @@
   ],
   "scripts": {
     "build": "rimraf dist && tsc -p ./tsconfig.build.json",
-    "clean": "rimraf --no-glob ./dist ./_release ./coverage ./tsconfig.tsbuildinfo",
     "changeset": "changeset",
+    "clean": "rimraf --no-glob ./dist ./_release ./coverage ./tsconfig.tsbuildinfo",
     "cz": "cz",
+    "g:checkConflicts": "yarn node --import=@hyperse/ts-node/register ./scripts/checkConflicts.ts",
+    "g:syncDependencies": "yarn node --import=@hyperse/ts-node/register ./scripts/syncDependencies.ts && yarn constraints",
     "lint": "eslint .",
     "lint-fix": "yarn lint --fix",
     "lint-staged-files": "lint-staged --allow-empty",
@@ -59,6 +62,7 @@
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@hyperse/eslint-config-hyperse": "^1.4.5",
+    "@hyperse/ts-node": "^1.0.3",
     "@types/node": "^24.0.13",
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
