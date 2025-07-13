@@ -1,5 +1,13 @@
 # @hyperse/dependency-sync
 
+## 1.0.5
+
+### Patch Changes
+
+- [`8614653`](https://github.com/hyperse-io/dependency-sync/commit/8614653271d721a24031a91e9ac223bc46b2b335) Thanks [@tianyingchun](https://github.com/tianyingchun)! - sorting package.json
+
+- [`c2f4b30`](https://github.com/hyperse-io/dependency-sync/commit/c2f4b30b2a159468e9bc8a69f1fa8262923eb2d6) Thanks [@tianyingchun](https://github.com/tianyingchun)! - retain original peer dependencies during sorting
+
 ## 1.0.4
 
 ### Patch Changes
