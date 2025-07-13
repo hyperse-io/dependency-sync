@@ -39,7 +39,19 @@ export async function checkMissedPackageDeclaration(
     // Check if the imported module is declared in the package.json file
     const matchModule = dependencies.find((x) => moduleName.startsWith(x));
     if (!matchModule) {
+      // Not found in the dependencies or peerDependencies, just throw an error
       throw new Error(`No declared package (${moduleName}) in ${projectCwd}!`);
+    } else {
+      // Check if the imported module declared in `dependencies` or `devDependencies`
+      if (
+        !packgeJson['dependencies']?.[matchModule] &&
+        !packgeJson['devDependencies']?.[matchModule]
+      ) {
+        // Not found in the dependencies or devDependencies, just throw an error
+        throw new Error(
+          `No declared package (${moduleName}) in ${projectCwd}! Please add it to the dependencies or devDependencies in the package.json file.`
+        );
+      }
     }
   }
 }
