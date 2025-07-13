@@ -117,10 +117,10 @@ const tidyPeerDependencies = async (
   );
 
   // Sort the peer dependencies
-  packgeJson.peerDependencies = sortPackageJson({
+  packgeJson.peerDependencies = {
     ...needSyncToPeerDependencies,
     ...newInferredPeerDependencies,
-  }) as Record<string, string>;
+  } as Record<string, string>;
 
   // Tidy finnal dependencies, devDependencies
   for (const [key, value] of Object.entries(oldPackageDependencies)) {
@@ -140,19 +140,21 @@ const tidyPeerDependencies = async (
     }
   }
 
-  packgeJson['dependencies'] = sortPackageJson(
-    oldPackageDependencies
-  ) as Record<string, string>;
+  packgeJson['dependencies'] = oldPackageDependencies as Record<string, string>;
 
-  packgeJson['devDependencies'] = sortPackageJson(
-    oldPackageDevDependencies
-  ) as Record<string, string>;
+  packgeJson['devDependencies'] = oldPackageDevDependencies as Record<
+    string,
+    string
+  >;
 
   // Clean the empty dependencies
   cleanEmptyDependencies(packgeJson);
 
   // Write the package.json file
-  writeFileSync(packageJsonFile, JSON.stringify(packgeJson, null, 2) + '\n');
+  writeFileSync(
+    packageJsonFile,
+    JSON.stringify(sortPackageJson(packgeJson), null, 2) + '\n'
+  );
 };
 
 export interface SyncDependenciesOptions {

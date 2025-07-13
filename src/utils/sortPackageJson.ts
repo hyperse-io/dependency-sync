@@ -5,8 +5,6 @@ import { sortPackageJson as sortPackageJsonFn } from 'sort-package-json';
  * @param packageJson - The package.json file to sort.
  * @returns The sorted package.json file.
  */
-export function sortPackageJson(packageJson: Record<string, unknown>) {
-  return sortPackageJsonFn(packageJson, {
-    sortOrder: ['name', 'version', 'dependencies', 'devDependencies'],
-  });
+export function sortPackageJson<T extends Record<any, any>>(packageJson: T) {
+  return sortPackageJsonFn(packageJson);
 }
