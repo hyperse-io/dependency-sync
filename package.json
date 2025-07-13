@@ -1,6 +1,6 @@
 {
   "name": "@hyperse/dependency-sync",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A comprehensive Node.js utility for managing dependencies in monorepo environments, specifically designed for Hyperse plugin ecosystems.",
   "keywords": [
     "hyperse",

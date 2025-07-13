@@ -1,5 +1,11 @@
 # @hyperse/dependency-sync
 
+## 1.0.7
+
+### Patch Changes
+
+- [`0d31f43`](https://github.com/hyperse-io/dependency-sync/commit/0d31f431c66fb6ec11226754fba40da077fbbe88) Thanks [@tianyingchun](https://github.com/tianyingchun)! - add missed check logics
+
 ## 1.0.6
 
 ### Patch Changes
