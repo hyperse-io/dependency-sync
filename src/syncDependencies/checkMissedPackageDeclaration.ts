@@ -19,8 +19,9 @@ export async function checkMissedPackageDeclaration(
   const packageJsonFile = join(projectCwd, 'package.json');
   // Extract the package.json file
   const packgeJson = readJson<Package['packageJson']>(packageJsonFile);
-  // Extract the dependencies and devDependencies from the package.json file
-  // Sort by length, to avoid the longest match
+  // Extract the dependencies and peerDependencies from the package.json file
+  // Sort by length in descending order to ensure imported modules are properly declared in either dependencies or peerDependencies
+  // For example, '@scope/package/subpath' should match '@scope/package' not '@scope'
   const dependencies = Object.keys({
     ...(packgeJson['dependencies'] as Record<string, string>),
     ...(packgeJson['peerDependencies'] as Record<string, string>),
