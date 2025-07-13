@@ -118,6 +118,8 @@ const tidyPeerDependencies = async (
 
   // Sort the peer dependencies
   packgeJson.peerDependencies = {
+    // Keep the original peer dependencies, because we may need to fixed  some peer dependencies
+    ...packgeJson.peerDependencies,
     ...needSyncToPeerDependencies,
     ...newInferredPeerDependencies,
   } as Record<string, string>;
