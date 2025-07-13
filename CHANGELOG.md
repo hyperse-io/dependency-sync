@@ -1,5 +1,11 @@
 # @hyperse/dependency-sync
 
+## 1.0.6
+
+### Patch Changes
+
+- [`d9ef327`](https://github.com/hyperse-io/dependency-sync/commit/d9ef3272e4a62329effd830bf96afff979dde7b9) Thanks [@tianyingchun](https://github.com/tianyingchun)! - remove unused lodash
+
 ## 1.0.5
 
 ### Patch Changes
