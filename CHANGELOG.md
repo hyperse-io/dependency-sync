@@ -1,5 +1,11 @@
 # @hyperse/dependency-sync
 
+## 1.0.8
+
+### Patch Changes
+
+- [`554af6e`](https://github.com/hyperse-io/dependency-sync/commit/554af6e6c844702886e2397591d467206c200c6c) Thanks [@tianyingchun](https://github.com/tianyingchun)! - bump version & add ignoreList to support Regexp
+
 ## 1.0.7
 
 ### Patch Changes
