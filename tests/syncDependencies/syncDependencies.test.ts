@@ -56,7 +56,13 @@ const defaultDependenciesReferPeepDependencies: Record<string, string[]> = {
 };
 
 // Default white package list
-const defaultIgnoredCheckList = ['dotenv', 'fs-capacitor', 'sharp', 'express'];
+const defaultIgnoredCheckList = [
+  'dotenv',
+  'fs-capacitor',
+  'sharp',
+  'express',
+  /^@vendure\/core$/,
+];
 
 // Mock the dependencies
 vi.mock('../../src/utils/getPackages.js', () => ({

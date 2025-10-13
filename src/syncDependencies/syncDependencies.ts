@@ -164,7 +164,7 @@ export interface SyncDependenciesOptions {
   checkMissing?: boolean;
   maxRangeCanbeSyncPeerDependencies?: Record<string, string>;
   dependenciesReferPeepDependencies?: Record<string, string[]>;
-  ignoredCheckList?: string[];
+  ignoredCheckList?: Array<string | RegExp>;
 }
 
 /**

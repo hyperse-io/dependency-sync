@@ -11,7 +11,7 @@ import { extractImportedModules } from './extractImportedModules.js';
  */
 export async function checkMissedPackageDeclaration(
   projectCwd: string,
-  ignoredCheckList: string[]
+  ignoredCheckList: Array<string | RegExp>
 ) {
   // Extract the imported modules of this project from the source files
   const importedModulesOfThisProject = await extractImportedModules(projectCwd);
@@ -33,7 +33,12 @@ export async function checkMissedPackageDeclaration(
       builtinModules.includes(moduleName) || isBuiltin(moduleName);
 
     // Ignore the builtin modules and the packages in the ignoredCheckList
-    if (builtin || ignoredCheckList.includes(moduleName)) {
+    if (
+      builtin ||
+      ignoredCheckList.some((x) =>
+        x instanceof RegExp ? x.test(moduleName) : x === moduleName
+      )
+    ) {
       continue;
     }
     // Check if the imported module is declared in the package.json file

@@ -26,7 +26,7 @@ type VersionMap = Map<string, string[]>;
 export const checkConflicts = async (
   nodeModulesPath: string,
   pkgPatterns: string[],
-  ignorePackages: string[] = []
+  ignorePackages: Array<string | RegExp> = []
 ): Promise<VersionMap> => {
   const packageJsonFiles = await findPackageJsonFiles(
     nodeModulesPath,
@@ -62,12 +62,15 @@ async function buildVersionMap(files: string[]): Promise<VersionMap> {
 
 function filterConflicts(
   versionMap: VersionMap,
-  ignorePackages: string[]
+  ignorePackages: Array<string | RegExp>
 ): VersionMap {
   return new Map(
     Array.from(versionMap.entries()).filter(
       ([name, versions]) =>
-        versions.length > 1 && !ignorePackages.includes(name)
+        versions.length > 1 &&
+        !ignorePackages.some((x) =>
+          x instanceof RegExp ? x.test(name) : x === name
+        )
     )
   );
 }
