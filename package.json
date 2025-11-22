@@ -61,7 +61,7 @@
     "@changesets/cli": "^2.29.7",
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
-    "@hyperse/eslint-config-hyperse": "^1.4.10",
+    "@hyperse/eslint-config-hyperse": "^1.5.0",
     "@hyperse/ts-node": "^1.0.3",
     "@types/node": "^24.10.1",
     "commitizen": "^4.3.1",
