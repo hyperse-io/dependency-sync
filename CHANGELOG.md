@@ -1,5 +1,11 @@
 # @hyperse/dependency-sync
 
+## 1.1.0
+
+### Minor Changes
+
+- [`9bc75c5`](https://github.com/hyperse-io/dependency-sync/commit/9bc75c51ca00fd5f4edc48e38bb46447df9cf416) Thanks [@tianyingchun](https://github.com/tianyingchun)! - update dependencies and add unused package declaration check
+
 ## 1.0.8
 
 ### Patch Changes
