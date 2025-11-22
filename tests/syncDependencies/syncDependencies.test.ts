@@ -229,6 +229,7 @@ describe('syncDependencies', () => {
 
     await syncDependencies(fixtureCwd, {
       excludedPackages,
+      checkUnused: false,
       maxRangeCanbeSyncPeerDependencies: defaultAllPeerDependencies,
       dependenciesReferPeepDependencies:
         defaultDependenciesReferPeepDependencies,
@@ -269,7 +270,9 @@ describe('syncDependencies', () => {
     );
     vi.mocked(checkMissedPackageDeclaration).mockResolvedValue(undefined);
 
-    await syncDependencies(fixtureCwd);
+    await syncDependencies(fixtureCwd, {
+      checkUnused: false,
+    });
 
     // Should use default empty objects for optional parameters
     expect(checkMissedPackageDeclaration).toHaveBeenCalledWith(fixtureCwd, []);
@@ -289,6 +292,7 @@ describe('syncDependencies', () => {
     vi.mocked(checkMissedPackageDeclaration).mockResolvedValue(undefined);
 
     await syncDependencies(fixtureCwd, {
+      checkUnused: false,
       maxRangeCanbeSyncPeerDependencies: defaultAllPeerDependencies,
       dependenciesReferPeepDependencies:
         defaultDependenciesReferPeepDependencies,
@@ -342,6 +346,7 @@ describe('syncDependencies', () => {
     vi.mocked(checkMissedPackageDeclaration).mockResolvedValue(undefined);
 
     await syncDependencies(fixtureCwd, {
+      checkUnused: false,
       maxRangeCanbeSyncPeerDependencies: defaultAllPeerDependencies,
       dependenciesReferPeepDependencies:
         defaultDependenciesReferPeepDependencies,
@@ -366,9 +371,11 @@ describe('syncDependencies', () => {
     vi.mocked(extractImportedModules).mockResolvedValue(new Set([]));
     vi.mocked(checkMissedPackageDeclaration).mockResolvedValue(undefined);
 
-    await syncDependencies();
+    await syncDependencies(fixtureCwd, {
+      checkUnused: false,
+    });
 
     // Should call getPackages with process.cwd()
-    expect(getPackages).toHaveBeenCalledWith(process.cwd());
+    expect(getPackages).toHaveBeenCalledWith(fixtureCwd);
   });
 });

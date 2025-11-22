@@ -5,6 +5,7 @@ import { getPackages } from '../utils/getPackages.js';
 import { readJson } from '../utils/readJson.js';
 import { sortPackageJson } from '../utils/sortPackageJson.js';
 import { checkMissedPackageDeclaration } from './checkMissedPackageDeclaration.js';
+import { checkUnusedPackageDeclaration } from './checkUnusedPackageDeclaration.js';
 import { extractImportedModules } from './extractImportedModules.js';
 
 /**
@@ -162,6 +163,7 @@ const tidyPeerDependencies = async (
 export interface SyncDependenciesOptions {
   excludedPackages?: (pkg: Package) => boolean;
   checkMissing?: boolean;
+  checkUnused?: boolean;
   maxRangeCanbeSyncPeerDependencies?: Record<string, string>;
   dependenciesReferPeepDependencies?: Record<string, string[]>;
   ignoredCheckList?: Array<string | RegExp>;
@@ -173,6 +175,7 @@ export interface SyncDependenciesOptions {
  * @param options - Configuration options
  * @param options.excludedPackages - Whether to exclude admin-ui packages (default: true)
  * @param options.checkMissing - Whether to check for missing package declarations (default: true)
+ * @param options.checkUnused - Whether to check for unused package declarations (default: false)
  * @param options.maxRangeCanbeSyncPeerDependencies - Map of peer dependencies and their versions
  * @param options.dependenciesReferPeepDependencies - Map of dependencies that reference peer dependencies
  * @param options.ignoredCheckList - List of packages to ignore when checking for missing declarations
@@ -184,6 +187,7 @@ export async function syncDependencies(
   const {
     excludedPackages,
     checkMissing = true,
+    checkUnused = false,
     maxRangeCanbeSyncPeerDependencies = {},
     dependenciesReferPeepDependencies = {},
     ignoredCheckList = [],
@@ -209,6 +213,13 @@ export async function syncDependencies(
   if (checkMissing) {
     for (const packageItem of needCheckProjects) {
       await checkMissedPackageDeclaration(packageItem.dir, ignoredCheckList);
+    }
+  }
+
+  // step3. check unused package declarations
+  if (checkUnused) {
+    for (const packageItem of needCheckProjects) {
+      await checkUnusedPackageDeclaration(packageItem.dir, ignoredCheckList);
     }
   }
 }
