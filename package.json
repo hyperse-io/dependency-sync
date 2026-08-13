@@ -31,7 +31,7 @@
   "scripts": {
     "build": "rimraf dist && tsc -p ./tsconfig.build.json",
     "changeset": "changeset",
-    "clean": "rimraf --no-glob ./dist ./_release ./coverage ./tsconfig.tsbuildinfo",
+    "clean": "rimraf --no-glob ./dist ./coverage ./tsconfig.tsbuildinfo",
     "cz": "cz",
     "g:checkConflicts": "yarn node --import=@hyperse/ts-node/register ./scripts/checkConflicts.ts",
     "g:syncDependencies": "yarn node --import=@hyperse/ts-node/register ./scripts/syncDependencies.ts && yarn constraints",
@@ -57,8 +57,8 @@
     "sort-package-json": "^3.4.0"
   },
   "devDependencies": {
-    "@changesets/changelog-github": "^0.5.1",
-    "@changesets/cli": "^2.29.7",
+    "@changesets/changelog-github": "^1.0.0",
+    "@changesets/cli": "^3.0.0",
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
     "@hyperse/eslint-config-hyperse": "^1.5.0",
@@ -76,7 +76,7 @@
   },
   "packageManager": "yarn@4.11.0",
   "engines": {
-    "node": ">=20"
+    "node": ">=22.11.0"
   },
   "publishConfig": {
     "access": "public"
