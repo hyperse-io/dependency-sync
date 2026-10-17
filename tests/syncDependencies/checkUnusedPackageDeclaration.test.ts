@@ -32,9 +32,8 @@ describe('checkUnusedPackageDeclaration', () => {
   });
 
   it('should not throw when all dependencies are used', async () => {
-    const { extractImportedModules } = await import(
-      '../../src/syncDependencies/extractImportedModules.js'
-    );
+    const { extractImportedModules } =
+      await import('../../src/syncDependencies/extractImportedModules.js');
     const { readJson } = await import('../../src/utils/readJson.js');
 
     vi.mocked(extractImportedModules).mockResolvedValue(
@@ -59,9 +58,8 @@ describe('checkUnusedPackageDeclaration', () => {
   });
 
   it('should throw error when unused dependencies exist', async () => {
-    const { extractImportedModules } = await import(
-      '../../src/syncDependencies/extractImportedModules.js'
-    );
+    const { extractImportedModules } =
+      await import('../../src/syncDependencies/extractImportedModules.js');
     const { readJson } = await import('../../src/utils/readJson.js');
 
     vi.mocked(extractImportedModules).mockResolvedValue(
@@ -84,9 +82,8 @@ describe('checkUnusedPackageDeclaration', () => {
   });
 
   it('should throw error when unused peerDependencies exist', async () => {
-    const { extractImportedModules } = await import(
-      '../../src/syncDependencies/extractImportedModules.js'
-    );
+    const { extractImportedModules } =
+      await import('../../src/syncDependencies/extractImportedModules.js');
     const { readJson } = await import('../../src/utils/readJson.js');
 
     vi.mocked(extractImportedModules).mockResolvedValue(
@@ -110,9 +107,8 @@ describe('checkUnusedPackageDeclaration', () => {
   });
 
   it('should throw error with multiple unused packages', async () => {
-    const { extractImportedModules } = await import(
-      '../../src/syncDependencies/extractImportedModules.js'
-    );
+    const { extractImportedModules } =
+      await import('../../src/syncDependencies/extractImportedModules.js');
     const { readJson } = await import('../../src/utils/readJson.js');
 
     vi.mocked(extractImportedModules).mockResolvedValue(
@@ -146,9 +142,8 @@ describe('checkUnusedPackageDeclaration', () => {
   });
 
   it('should ignore packages in ignoredCheckList (string)', async () => {
-    const { extractImportedModules } = await import(
-      '../../src/syncDependencies/extractImportedModules.js'
-    );
+    const { extractImportedModules } =
+      await import('../../src/syncDependencies/extractImportedModules.js');
     const { readJson } = await import('../../src/utils/readJson.js');
 
     vi.mocked(extractImportedModules).mockResolvedValue(
@@ -170,9 +165,8 @@ describe('checkUnusedPackageDeclaration', () => {
   });
 
   it('should ignore packages in ignoredCheckList (RegExp)', async () => {
-    const { extractImportedModules } = await import(
-      '../../src/syncDependencies/extractImportedModules.js'
-    );
+    const { extractImportedModules } =
+      await import('../../src/syncDependencies/extractImportedModules.js');
     const { readJson } = await import('../../src/utils/readJson.js');
 
     vi.mocked(extractImportedModules).mockResolvedValue(
@@ -194,9 +188,8 @@ describe('checkUnusedPackageDeclaration', () => {
   });
 
   it('should match packages with subpaths correctly', async () => {
-    const { extractImportedModules } = await import(
-      '../../src/syncDependencies/extractImportedModules.js'
-    );
+    const { extractImportedModules } =
+      await import('../../src/syncDependencies/extractImportedModules.js');
     const { readJson } = await import('../../src/utils/readJson.js');
 
     // Import subpath of a package
@@ -219,9 +212,8 @@ describe('checkUnusedPackageDeclaration', () => {
   });
 
   it('should handle empty dependencies and peerDependencies', async () => {
-    const { extractImportedModules } = await import(
-      '../../src/syncDependencies/extractImportedModules.js'
-    );
+    const { extractImportedModules } =
+      await import('../../src/syncDependencies/extractImportedModules.js');
     const { readJson } = await import('../../src/utils/readJson.js');
 
     vi.mocked(extractImportedModules).mockResolvedValue(
@@ -239,9 +231,8 @@ describe('checkUnusedPackageDeclaration', () => {
   });
 
   it('should handle empty imported modules', async () => {
-    const { extractImportedModules } = await import(
-      '../../src/syncDependencies/extractImportedModules.js'
-    );
+    const { extractImportedModules } =
+      await import('../../src/syncDependencies/extractImportedModules.js');
     const { readJson } = await import('../../src/utils/readJson.js');
 
     vi.mocked(extractImportedModules).mockResolvedValue(new Set([]));
@@ -260,9 +251,8 @@ describe('checkUnusedPackageDeclaration', () => {
   });
 
   it('should sort dependencies by length descending for proper matching', async () => {
-    const { extractImportedModules } = await import(
-      '../../src/syncDependencies/extractImportedModules.js'
-    );
+    const { extractImportedModules } =
+      await import('../../src/syncDependencies/extractImportedModules.js');
     const { readJson } = await import('../../src/utils/readJson.js');
 
     // Import a subpath
@@ -287,9 +277,8 @@ describe('checkUnusedPackageDeclaration', () => {
   });
 
   it('should handle mixed dependencies and peerDependencies', async () => {
-    const { extractImportedModules } = await import(
-      '../../src/syncDependencies/extractImportedModules.js'
-    );
+    const { extractImportedModules } =
+      await import('../../src/syncDependencies/extractImportedModules.js');
     const { readJson } = await import('../../src/utils/readJson.js');
 
     vi.mocked(extractImportedModules).mockResolvedValue(
@@ -321,9 +310,8 @@ describe('checkUnusedPackageDeclaration', () => {
   });
 
   it('should call extractImportedModules with correct projectCwd', async () => {
-    const { extractImportedModules } = await import(
-      '../../src/syncDependencies/extractImportedModules.js'
-    );
+    const { extractImportedModules } =
+      await import('../../src/syncDependencies/extractImportedModules.js');
     const { readJson } = await import('../../src/utils/readJson.js');
 
     vi.mocked(extractImportedModules).mockResolvedValue(new Set([]));
@@ -338,9 +326,8 @@ describe('checkUnusedPackageDeclaration', () => {
   });
 
   it('should read package.json from correct path', async () => {
-    const { extractImportedModules } = await import(
-      '../../src/syncDependencies/extractImportedModules.js'
-    );
+    const { extractImportedModules } =
+      await import('../../src/syncDependencies/extractImportedModules.js');
     const { readJson } = await import('../../src/utils/readJson.js');
 
     vi.mocked(extractImportedModules).mockResolvedValue(new Set([]));

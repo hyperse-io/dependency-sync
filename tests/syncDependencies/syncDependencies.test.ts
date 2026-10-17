@@ -113,12 +113,10 @@ describe('syncDependencies', () => {
 
   it('should sync dependencies with default configuration', async () => {
     const { getPackages } = await import('../../src/utils/getPackages.js');
-    const { checkMissedPackageDeclaration } = await import(
-      '../../src/syncDependencies/checkMissedPackageDeclaration.js'
-    );
-    const { extractImportedModules } = await import(
-      '../../src/syncDependencies/extractImportedModules.js'
-    );
+    const { checkMissedPackageDeclaration } =
+      await import('../../src/syncDependencies/checkMissedPackageDeclaration.js');
+    const { extractImportedModules } =
+      await import('../../src/syncDependencies/extractImportedModules.js');
 
     // Mock getPackages to return our test package
     vi.mocked(getPackages).mockResolvedValue({
@@ -160,12 +158,10 @@ describe('syncDependencies', () => {
 
   it('should skip missing package check when checkMissing is false', async () => {
     const { getPackages } = await import('../../src/utils/getPackages.js');
-    const { checkMissedPackageDeclaration } = await import(
-      '../../src/syncDependencies/checkMissedPackageDeclaration.js'
-    );
-    const { extractImportedModules } = await import(
-      '../../src/syncDependencies/extractImportedModules.js'
-    );
+    const { checkMissedPackageDeclaration } =
+      await import('../../src/syncDependencies/checkMissedPackageDeclaration.js');
+    const { extractImportedModules } =
+      await import('../../src/syncDependencies/extractImportedModules.js');
 
     vi.mocked(getPackages).mockResolvedValue({
       packages: [
@@ -199,12 +195,10 @@ describe('syncDependencies', () => {
 
   it('should filter packages using excludedPackages function', async () => {
     const { getPackages } = await import('../../src/utils/getPackages.js');
-    const { checkMissedPackageDeclaration } = await import(
-      '../../src/syncDependencies/checkMissedPackageDeclaration.js'
-    );
-    const { extractImportedModules } = await import(
-      '../../src/syncDependencies/extractImportedModules.js'
-    );
+    const { checkMissedPackageDeclaration } =
+      await import('../../src/syncDependencies/checkMissedPackageDeclaration.js');
+    const { extractImportedModules } =
+      await import('../../src/syncDependencies/extractImportedModules.js');
 
     const mockPackages = [
       {
@@ -246,12 +240,10 @@ describe('syncDependencies', () => {
 
   it('should use default options when none provided', async () => {
     const { getPackages } = await import('../../src/utils/getPackages.js');
-    const { checkMissedPackageDeclaration } = await import(
-      '../../src/syncDependencies/checkMissedPackageDeclaration.js'
-    );
-    const { extractImportedModules } = await import(
-      '../../src/syncDependencies/extractImportedModules.js'
-    );
+    const { checkMissedPackageDeclaration } =
+      await import('../../src/syncDependencies/checkMissedPackageDeclaration.js');
+    const { extractImportedModules } =
+      await import('../../src/syncDependencies/extractImportedModules.js');
 
     vi.mocked(getPackages).mockResolvedValue({
       packages: [
@@ -280,12 +272,10 @@ describe('syncDependencies', () => {
 
   it('should handle empty packages array', async () => {
     const { getPackages } = await import('../../src/utils/getPackages.js');
-    const { checkMissedPackageDeclaration } = await import(
-      '../../src/syncDependencies/checkMissedPackageDeclaration.js'
-    );
-    const { extractImportedModules } = await import(
-      '../../src/syncDependencies/extractImportedModules.js'
-    );
+    const { checkMissedPackageDeclaration } =
+      await import('../../src/syncDependencies/checkMissedPackageDeclaration.js');
+    const { extractImportedModules } =
+      await import('../../src/syncDependencies/extractImportedModules.js');
 
     vi.mocked(getPackages).mockResolvedValue({ packages: [] } as any);
     vi.mocked(extractImportedModules).mockResolvedValue(new Set([]));
@@ -306,12 +296,10 @@ describe('syncDependencies', () => {
 
   it('should process multiple packages correctly', async () => {
     const { getPackages } = await import('../../src/utils/getPackages.js');
-    const { checkMissedPackageDeclaration } = await import(
-      '../../src/syncDependencies/checkMissedPackageDeclaration.js'
-    );
-    const { extractImportedModules } = await import(
-      '../../src/syncDependencies/extractImportedModules.js'
-    );
+    const { checkMissedPackageDeclaration } =
+      await import('../../src/syncDependencies/checkMissedPackageDeclaration.js');
+    const { extractImportedModules } =
+      await import('../../src/syncDependencies/extractImportedModules.js');
 
     const secondPackageDir = join(fixtureCwd, 'package2');
     createFixtureFiles(import.meta.url, 'sync-deps-fixture/package2', {
@@ -360,12 +348,10 @@ describe('syncDependencies', () => {
 
   it('should use process.cwd() as default workspace root', async () => {
     const { getPackages } = await import('../../src/utils/getPackages.js');
-    const { checkMissedPackageDeclaration } = await import(
-      '../../src/syncDependencies/checkMissedPackageDeclaration.js'
-    );
-    const { extractImportedModules } = await import(
-      '../../src/syncDependencies/extractImportedModules.js'
-    );
+    const { checkMissedPackageDeclaration } =
+      await import('../../src/syncDependencies/checkMissedPackageDeclaration.js');
+    const { extractImportedModules } =
+      await import('../../src/syncDependencies/extractImportedModules.js');
 
     vi.mocked(getPackages).mockResolvedValue({ packages: [] } as any);
     vi.mocked(extractImportedModules).mockResolvedValue(new Set([]));
